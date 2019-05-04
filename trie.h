@@ -44,7 +44,6 @@ private:
 //
 // TRIE member functions
 ////////////////////////////////////////
-// only works on trigram as of now
 Trie::Trie(istream& inFile, const int& gramLen, const int& k)
 {
   vector<vector<Node*>> levelNodes(gramLen);
@@ -109,7 +108,7 @@ Trie::Trie(istream& inFile, const int& gramLen, const int& k)
 		}
 	    }
 	  // root case
-	  if (similarCount == 0 || inFile.eof()) // root
+	  if (similarCount == 0 || inFile.eof()) 
 	    {
 	      levelNodes[0].push_back
 		(new Node((*Encoder::vocabS2ID_)[context.first[0]],
@@ -148,6 +147,7 @@ vector<string> Trie::mostLikelyNext(const vector<string>& tokens,
   return branch->mostLikelyNext(num);
 }
 
+////////////////////////////////////////
 size_t Trie::frequencyCount(const vector<string>& tokens) const
 {
   Node* branch = roots_->get(tokens[0]);
